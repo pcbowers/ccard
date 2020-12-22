@@ -9,8 +9,8 @@
     "semantic-release": "^17.3.0"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "semantic-release": "semantic-release"
+    "semantic-release": "semantic-release",
+    "postinstall": "(cd functions && npm install); (cd client && npm install)"
   },
   "repository": {
     "type": "git",
