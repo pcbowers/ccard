@@ -10,12 +10,17 @@ jobs:
   build_and_deploy:
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout Repo
       - uses: actions/checkout@v2
-      - run: cd client \
-              npm ci \
-              npm run build \
-              cd ../functions \
-              npm ci
+      - name: Install Frontend Dependencies
+      - run: cd client && npm ci
+      - name: Build Frontend
+      - run : npm run build
+      - name: Install Function Dependencies
+      - run: cd ../functions && npm ci
+      - name: TSC Functions
+      - run: npm run build
+      - name: Deploy to Firebase
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
