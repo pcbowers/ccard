@@ -12,11 +12,11 @@ jobs:
       - name: Install Frontend Dependencies
         run: cd client && npm ci
       - name: Build Frontend
-        run : npm run build
+        run : cd client && npm run build
       - name: Install Function Dependencies
-        run: cd ../functions && npm ci
+        run: cd functions && npm ci
       - name: TSC Functions
-        run: npm run build
+        run: cd functions && npm run build
       - name: Deploy to Firebase
         uses: FirebaseExtended/action-hosting-deploy@v0
         with:
